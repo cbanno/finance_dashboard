@@ -11,4 +11,15 @@ def data_converter() :
 
         for row in reader: #for-loop to go through every line 
 
-            transactions.append(row)
+            transactions.append(row) #append every row of data to the transactions list
+
+            category = row['Category'] 
+
+            dollar_amount = float(row['Amount']) #convert string of cost into float for arithmetic
+
+            summary[category] = summary.get(category, 0) + dollar_amount
+
+    data_result = {
+        "transactions": transactions,
+        "totals": summary
+    }
